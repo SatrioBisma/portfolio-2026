@@ -34,7 +34,7 @@ const projects = [
   {
     title: "Nusa Indah App",
     description: "A digital marketplace platform that bridges workshops and spare parts sales to facilitate buyers' transactions.",
-    image: "/logoNusaindah.png",
+    image: "/logonusaindah.png",
     link: "#",
     tags: ["Java", "php"],
     category: "mobile",
