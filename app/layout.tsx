@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   // 1. Title Branding
   title: {
-    default: 'Satrio Bisma Bramantyo | Professional Portfolio',
+    default: 'Satrio Bisma Bramantyo | Personal Portfolio',
     template: '%s | Satrio Bisma Bramantyo'
   },
   description: 'An Information Systems professional specializing in Digital Banking Operations and Modern Web Development. Dedicated to crafting seamless digital experiences and driving operational excellence.',
