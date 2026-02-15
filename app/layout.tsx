@@ -15,14 +15,14 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  // 1. Menambahkan nama lengkap di Title agar Google mudah mengenali pemilik web
+  // 1. Title Branding
   title: {
-    default: 'Satrio Bisma Bramantyo | Personal Portfolio',
+    default: 'Satrio Bisma Bramantyo | Professional Portfolio',
     template: '%s | Satrio Bisma Bramantyo'
   },
   description: 'An Information Systems professional specializing in Digital Banking Operations and Modern Web Development. Dedicated to crafting seamless digital experiences and driving operational excellence.',
   
-  // 2. Optimasi Keywords agar muncul saat pencarian nama "Satrio" atau "Bisma"
+  // 2. SEO Keywords
   keywords: [
     'Satrio', 
     'Bisma', 
@@ -32,13 +32,18 @@ export const metadata: Metadata = {
     'Portfolio Satrio Bisma', 
   ],
 
-  // 3. Menambahkan foto profile.jpg sebagai Favicon (ikon di samping judul tab)
+  // 3. Favicon (Harus file PNG transparan agar terlihat bulat)
   icons: {
     icon: '/profiletittle.png',
-    apple: '/profiletittle.png', // Untuk tampilan saat di-save di iPhone/iOS
+    apple: '/profiletittle.png',
   },
 
-  // Metadata tambahan untuk SEO Media Sosial (OpenGraph)
+  // 4. Verifikasi Google Search Console (Perbaikan di sini)
+  verification: {
+    google: 'j7nRofSFp3rWSSdykInACpR19TBmP1rb7SdG0wlsuH0',
+  },
+
+  // 5. OpenGraph (Media Sosial)
   openGraph: {
     title: 'Satrio Bisma Bramantyo',
     description: 'Professional Portfolio of Satrio Bisma Bramantyo',
@@ -72,6 +77,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
+    // Mengubah lang ke "en" agar sesuai dengan deskripsi profesionalmu
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider
