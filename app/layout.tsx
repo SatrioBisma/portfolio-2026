@@ -34,8 +34,8 @@ export const metadata: Metadata = {
 
   // 3. Favicon (Harus file PNG transparan agar terlihat bulat)
   icons: {
-    icon: '/profiletittle.png',
-    apple: '/profiletittle.png',
+    icon: '/profiletittle.png?v=2',
+    apple: '/profiletittle.png?v=2',
   },
 
   // 4. Verifikasi Google Search Console (Perbaikan di sini)
