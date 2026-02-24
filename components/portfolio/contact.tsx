@@ -87,31 +87,31 @@ export function Contact() {
               <div className="space-y-4">
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Nama Lengkap</label>
+                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Full Name</label>
                     <input
                       name="user_name"
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="please input your name"
                       required
                       className="w-full bg-transparent border-b border-border py-2 text-sm outline-none transition-all focus:border-accent placeholder:text-muted-foreground/30"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Alamat Email</label>
+                    <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</label>
                     <input
                       name="user_email"
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder="please input your email"
                       required
                       className="w-full bg-transparent border-b border-border py-2 text-sm outline-none transition-all focus:border-accent placeholder:text-muted-foreground/30"
                     />
                   </div>
                 </div>
                 <div className="space-y-2 pt-4">
-                  <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Pesan Anda</label>
+                  <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Your Massage</label>
                   <textarea
                     name="message"
-                    placeholder="Halo, saya ingin mendiskusikan tentang..."
+                    placeholder="Hello, is there something we can discuss?"
                     required
                     rows={4}
                     className="w-full bg-transparent border-b border-border py-2 text-sm outline-none transition-all focus:border-accent resize-none placeholder:text-muted-foreground/30"
@@ -123,7 +123,7 @@ export function Contact() {
                 type="submit"
                 className="group flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-4 text-sm font-medium text-background transition-all hover:bg-foreground/90 active:scale-95"
               >
-                Kirim Pesan
+                Send Massage
                 <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
             </form>
