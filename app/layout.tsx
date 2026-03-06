@@ -76,10 +76,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // Simpan data schema di dalam variabel agar rapi
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Satrio Bisma Bramantyo",
+    "url": "https://www.satriobisma.my.id",
+    "sameAs": [
+      "https://www.linkedin.com/in/satriobisma/",
+      "https://www.instagram.com/satrio_bisma_/"
+    ],
+    "jobTitle": "Information Systems Professional",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "PT Bank Central Asia Tbk"
+    }
+  }
+
   return (
-    // Mengubah lang ke "en" agar sesuai dengan deskripsi profesionalmu
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        {/* Masukkan JSON-LD di sini agar Google bisa membacanya */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
