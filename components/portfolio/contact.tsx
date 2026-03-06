@@ -2,35 +2,45 @@
 
 import React, { useRef } from "react"
 import { motion } from "framer-motion"
-import { Send, Mail, MapPin, Phone } from "lucide-react"
+import { Send, Mail, MapPin } from "lucide-react"
 import emailjs from "@emailjs/browser"
 import { SectionHeading } from "./section-heading"
+import { toast } from 'sonner'
 
 export function Contact() {
   const form = useRef<HTMLFormElement>(null)
 
-  const sendEmail = (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-    if (!form.current) return
+    if (!form.current) return;
+
+    // Ambil nama dari form sebelum dikirim untuk dipersonalisasi di Toast
+    const formData = new FormData(form.current);
+    const userName = formData.get("user_name") as string;
 
     emailjs
       .sendForm(
-        "service_mkhsg7p",
-        "template_8msd8he",
-        form.current,
+        "service_mkhsg7p", 
+        "template_8msd8he", 
+        form.current, 
         "tzZ75NhSktCIzY90L"
       )
       .then(
-        (result) => {
-          alert("Pesan berhasil dikirim!")
-          form.current?.reset()
+        () => {
+          toast.success("Message Sent!", {
+            description: `Thank you ${userName || "Kak"}, I have received your message. I will reply as soon as possible.`,
+          });
+          
+          form.current?.reset();
         },
         (error) => {
-          alert("Gagal mengirim pesan: " + error.text)
+          toast.error("Failed to Send", {
+            description: "Looks like there's a technical problem: " + error.text,
+          });
         }
-      )
-  }
+      );
+  };
 
   return (
     <section id="Contact" className="px-6 py-28">
@@ -52,7 +62,7 @@ export function Contact() {
                 <span className="text-muted-foreground font-light">something great.</span>
               </h2>
               <p className="mt-6 max-w-sm text-base font-light leading-relaxed text-muted-foreground">
-              I am open to project collaborations, job opportunities, or simply discussing digital banking technology.
+                I am open to project collaborations, job opportunities, or simply discussing digital banking technology.
               </p>
             </div>
 
@@ -81,7 +91,7 @@ export function Contact() {
           >
             <form
               ref={form}
-              onSubmit={sendEmail}
+              onSubmit={handleSubmit} // SUDAH DIPERBAIKI (sebelumnya sendEmail)
               className="relative space-y-8 rounded-2xl border border-border/50 bg-card/30 p-8 shadow-sm backdrop-blur-sm"
             >
               <div className="space-y-4">
@@ -108,7 +118,7 @@ export function Contact() {
                   </div>
                 </div>
                 <div className="space-y-2 pt-4">
-                  <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Your Massage</label>
+                  <label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Your Message</label> {/* Perbaikan typo Massage -> Message */}
                   <textarea
                     name="message"
                     placeholder="Hello, is there something we can discuss?"
@@ -123,7 +133,7 @@ export function Contact() {
                 type="submit"
                 className="group flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-4 text-sm font-medium text-background transition-all hover:bg-foreground/90 active:scale-95"
               >
-                Send Massage
+                Send Message
                 <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
             </form>
