@@ -1,7 +1,12 @@
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 
-export function ProjectEasia() {
+interface ProjectEasiaProps {
+  slug?: string
+}
+
+export function ProjectEasia({ slug }: ProjectEasiaProps) {
   return (
     <motion.a
       key="easia"
@@ -10,9 +15,7 @@ export function ProjectEasia() {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`/project/${slug}`}
       className="group relative flex flex-col overflow-hidden rounded-xl border border-border/50 bg-card transition-all hover:border-border hover:shadow-lg hover:shadow-accent/5"
     >
       {/* Image Container */}

@@ -14,11 +14,11 @@ import {
 
 // Data project untuk filter dan mapping
 const projectData = [
-  { component: ProjectRewash, id: "rewash", category: "mobile" },
-  { component: ProjectPeriku, id: "periku", category: "mobile" },
-  { component: ProjectDirtykicks, id: "dirtykicks", category: "web" },
-  { component: ProjectNusaindah, id: "nusaindah", category: "mobile" },
-  { component: ProjectEasia, id: "easia", category: "web" },
+  { component: ProjectRewash, id: "rewash", category: "mobile", slug: "rewash" },
+  { component: ProjectPeriku, id: "periku", category: "mobile", slug: "periku" },
+  { component: ProjectDirtykicks, id: "dirtykicks", category: "web", slug: "dirtykicks" },
+  { component: ProjectNusaindah, id: "nusaindah", category: "mobile", slug: "nusaindah" },
+  { component: ProjectEasia, id: "easia", category: "web", slug: "e-asia-ghg" },
 ]
 
 const filters = ["all", "web", "mobile"]
@@ -73,8 +73,13 @@ export function Projects() {
         {/* Project Grid */}
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {displayedProjects.map((projectItem) => {
-            const ProjectComponent = projectItem.component
-            return <ProjectComponent key={projectItem.id} />
+            const { id, slug } = projectItem
+            if (id === "rewash") return <ProjectRewash key={id} slug={slug} />
+            if (id === "periku") return <ProjectPeriku key={id} slug={slug} />
+            if (id === "dirtykicks") return <ProjectDirtykicks key={id} slug={slug} />
+            if (id === "nusaindah") return <ProjectNusaindah key={id} slug={slug} />
+            if (id === "easia") return <ProjectEasia key={id} slug={slug} />
+            return null
           })}
         </div>
 
